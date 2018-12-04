@@ -31,16 +31,16 @@ public class YouTubeManager extends SimpleViewManager<YouTubeView> {
     }
 
     @Override
-    public Map<String,Integer> getCommandsMap() {
+    public Map<String, Integer> getCommandsMap() {
         return MapBuilder.of(
-            "seekTo",
-            COMMAND_SEEK_TO,
-            "nextVideo",
-            COMMAND_NEXT_VIDEO,
-            "previousVideo",
-            COMMAND_PREVIOUS_VIDEO,
-            "playVideoAt",
-            COMMAND_PLAY_VIDEO_AT
+                "seekTo",
+                COMMAND_SEEK_TO,
+                "nextVideo",
+                COMMAND_NEXT_VIDEO,
+                "previousVideo",
+                COMMAND_PREVIOUS_VIDEO,
+                "playVideoAt",
+                COMMAND_PLAY_VIDEO_AT
         );
     }
 
@@ -67,24 +67,27 @@ public class YouTubeManager extends SimpleViewManager<YouTubeView> {
             }
             default:
                 throw new IllegalArgumentException(
-                  String.format("Unsupported command %d received by %s.", commandType, getClass().getSimpleName())
+                        String.format("Unsupported command %d received by %s.", commandType, getClass().getSimpleName())
                 );
         }
     }
 
     @Override
-    public @Nullable Map <String,Object> getExportedCustomDirectEventTypeConstants() {
+    public @Nullable
+    Map<String, Object> getExportedCustomDirectEventTypeConstants() {
         return MapBuilder.of(
-            "error",
-            (Object) MapBuilder.of("registrationName", "onYouTubeError"),
-            "ready",
-            (Object) MapBuilder.of("registrationName", "onYouTubeReady"),
-            "state",
-            (Object) MapBuilder.of("registrationName", "onYouTubeChangeState"),
-            "quality",
-            (Object) MapBuilder.of("registrationName", "onYouTubeChangeQuality"),
-            "fullscreen",
-            (Object) MapBuilder.of("registrationName", "onYouTubeChangeFullscreen")
+                "error",
+                (Object) MapBuilder.of("registrationName", "onYouTubeError"),
+                "ready",
+                (Object) MapBuilder.of("registrationName", "onYouTubeReady"),
+                "state",
+                (Object) MapBuilder.of("registrationName", "onYouTubeChangeState"),
+                "quality",
+                (Object) MapBuilder.of("registrationName", "onYouTubeChangeQuality"),
+                "fullscreen",
+                (Object) MapBuilder.of("registrationName", "onYouTubeChangeFullscreen"),
+                "reloadYouTubeView",
+                (Object) MapBuilder.of("registrationName", "onReloadYouTubeView")
         );
     }
 
