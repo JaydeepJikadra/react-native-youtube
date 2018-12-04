@@ -15,9 +15,10 @@ import com.facebook.react.uimanager.events.RCTEventEmitter;
 
 public class YouTubeView extends FrameLayout {
 
-    private YouTubePlayerController mYouTubeController;
+    public YouTubePlayerController mYouTubeController;
     private VideoFragment mVideoFragment;
     private boolean mHasSavedInstance = false;
+    public String API_KEY = "";
 
     public YouTubeView(ReactContext context) {
         super(context);
@@ -153,7 +154,14 @@ public class YouTubeView extends FrameLayout {
         reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(getId(), "fullscreen", event);
     }
 
+    public void didReloadYoutube() {
+        WritableMap event = Arguments.createMap();
+        ReactContext reactContext = getReactContext();
+        reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(getId(), "reloadYouTubeView", event);
+    }
+
     public void setApiKey(String apiKey) {
+        this.API_KEY = apiKey;
         try {
             mVideoFragment.initialize(apiKey, mYouTubeController);
         } catch (Exception e) {
