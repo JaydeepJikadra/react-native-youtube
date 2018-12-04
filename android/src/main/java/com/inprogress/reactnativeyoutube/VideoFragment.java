@@ -25,7 +25,14 @@ public class VideoFragment extends YouTubePlayerFragment {
         if (mYouTubeView != null) {
             mYouTubeView.onVideoFragmentResume();
         }
-
         super.onResume();
+    }
+
+    @Override
+    public void onDestroy() {
+        if (mYouTubeView.mYouTubeController.mYouTubePlayer != null) {
+            mYouTubeView.mYouTubeController.mYouTubePlayer.release();
+        }
+        super.onDestroy();
     }
 }
